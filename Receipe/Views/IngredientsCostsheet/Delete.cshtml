@@ -1,0 +1,65 @@
+﻿@model Receipe.Models.rcp_ingredients_costsheet_child_t
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>rcp_ingredients_costsheet_child_t</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rcp_ingredients_costsheet_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rcp_ingredients_costsheet_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ingredients_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ingredients_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rct_ingredients_measurement_unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rct_ingredients_measurement_unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rec_standard_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rec_standard_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rec_standard_deviation_percentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rec_standard_deviation_percentage)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

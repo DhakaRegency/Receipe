@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HMS_LIVEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="rcp_ingredients_costsheet_child_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rcp_ingredients_costsheet_id" Type="int" Nullable="false" />
+          <Property Name="ingredients_id" Type="int" Nullable="false" />
+          <Property Name="rct_ingredients_measurement_unit" Type="int" Nullable="false" />
+          <Property Name="rec_standard_cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="rec_standard_deviation_percentage" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_ingredients_costsheet_parent_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="effective_from_date" Type="date" Nullable="false" />
+          <Property Name="effective_to_date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_ingredients_list_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="is_active" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_production_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="produced_recipe_id" Type="int" Nullable="false" />
+          <Property Name="produced_qty" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_recipe_child_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="recipe_parent_id" Type="int" Nullable="false" />
+          <Property Name="ingredients_id" Type="int" Nullable="false" />
+          <Property Name="measurement_unit" Type="int" Nullable="false" />
+          <Property Name="sub_recipe_id" Type="int" Nullable="false" />
+          <Property Name="is_sub_reipe" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_recipe_parent_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="recipe_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="wastage_percentage" Type="int" Nullable="false" />
+          <Property Name="yeild_percentage" Type="int" Nullable="false" />
+          <Property Name="portion" Type="int" Nullable="false" />
+          <Property Name="is_active" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HMS_LIVEModelStoreContainer">
+          <EntitySet Name="rcp_ingredients_costsheet_child_t" EntityType="Self.rcp_ingredients_costsheet_child_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rcp_ingredients_costsheet_parent_t" EntityType="Self.rcp_ingredients_costsheet_parent_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rcp_ingredients_list_t" EntityType="Self.rcp_ingredients_list_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rcp_production_t" EntityType="Self.rcp_production_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rcp_recipe_child_t" EntityType="Self.rcp_recipe_child_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rcp_recipe_parent_t" EntityType="Self.rcp_recipe_parent_t" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HMS_LIVEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="rcp_ingredients_costsheet_child_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rcp_ingredients_costsheet_id" Type="Int32" Nullable="false" />
+          <Property Name="ingredients_id" Type="Int32" Nullable="false" />
+          <Property Name="rct_ingredients_measurement_unit" Type="Int32" Nullable="false" />
+          <Property Name="rec_standard_cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="rec_standard_deviation_percentage" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_ingredients_costsheet_parent_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="effective_from_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="effective_to_date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="rcp_ingredients_list_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_active" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_production_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="produced_recipe_id" Type="Int32" Nullable="false" />
+          <Property Name="produced_qty" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_recipe_child_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="recipe_parent_id" Type="Int32" Nullable="false" />
+          <Property Name="ingredients_id" Type="Int32" Nullable="false" />
+          <Property Name="measurement_unit" Type="Int32" Nullable="false" />
+          <Property Name="sub_recipe_id" Type="Int32" Nullable="false" />
+          <Property Name="is_sub_reipe" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rcp_recipe_parent_t">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="recipe_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="wastage_percentage" Type="Int32" Nullable="false" />
+          <Property Name="yeild_percentage" Type="Int32" Nullable="false" />
+          <Property Name="portion" Type="Int32" Nullable="false" />
+          <Property Name="is_active" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HMS_LIVEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="rcp_ingredients_costsheet_child_t" EntityType="Self.rcp_ingredients_costsheet_child_t" />
+          <EntitySet Name="rcp_ingredients_costsheet_parent_t" EntityType="Self.rcp_ingredients_costsheet_parent_t" />
+          <EntitySet Name="rcp_ingredients_list_t" EntityType="Self.rcp_ingredients_list_t" />
+          <EntitySet Name="rcp_production_t" EntityType="Self.rcp_production_t" />
+          <EntitySet Name="rcp_recipe_child_t" EntityType="Self.rcp_recipe_child_t" />
+          <EntitySet Name="rcp_recipe_parent_t" EntityType="Self.rcp_recipe_parent_t" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HMS_LIVEModelStoreContainer" CdmEntityContainer="HMS_LIVEEntities">
+          <EntitySetMapping Name="rcp_ingredients_costsheet_child_t">
+            <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_ingredients_costsheet_child_t">
+              <MappingFragment StoreEntitySet="rcp_ingredients_costsheet_child_t">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="rcp_ingredients_costsheet_id" ColumnName="rcp_ingredients_costsheet_id" />
+                <ScalarProperty Name="ingredients_id" ColumnName="ingredients_id" />
+                <ScalarProperty Name="rct_ingredients_measurement_unit" ColumnName="rct_ingredients_measurement_unit" />
+                <ScalarProperty Name="rec_standard_cost" ColumnName="rec_standard_cost" />
+                <ScalarProperty Name="rec_standard_deviation_percentage" ColumnName="rec_standard_deviation_percentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rcp_ingredients_costsheet_parent_t">
+            <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_ingredients_costsheet_parent_t">
+              <MappingFragment StoreEntitySet="rcp_ingredients_costsheet_parent_t">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="effective_from_date" ColumnName="effective_from_date" />
+                <ScalarProperty Name="effective_to_date" ColumnName="effective_to_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rcp_ingredients_list_t">
+            <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_ingredients_list_t">
+              <MappingFragment StoreEntitySet="rcp_ingredients_list_t">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rcp_production_t">
+            <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_production_t">
+              <MappingFragment StoreEntitySet="rcp_production_t">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="produced_recipe_id" ColumnName="produced_recipe_id" />
+                <ScalarProperty Name="produced_qty" ColumnName="produced_qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rcp_recipe_child_t">
+            <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_recipe_child_t">
+              <MappingFragment StoreEntitySet="rcp_recipe_child_t">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="recipe_parent_id" ColumnName="recipe_parent_id" />
+                <ScalarProperty Name="ingredients_id" ColumnName="ingredients_id" />
+                <ScalarProperty Name="measurement_unit" ColumnName="measurement_unit" />
+                <ScalarProperty Name="sub_recipe_id" ColumnName="sub_recipe_id" />
+                <ScalarProperty Name="is_sub_reipe" ColumnName="is_sub_reipe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rcp_recipe_parent_t">
+            <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_recipe_parent_t">
+              <MappingFragment StoreEntitySet="rcp_recipe_parent_t">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="recipe_name" ColumnName="recipe_name" />
+                <ScalarProperty Name="wastage_percentage" ColumnName="wastage_percentage" />
+                <ScalarProperty Name="yeild_percentage" ColumnName="yeild_percentage" />
+                <ScalarProperty Name="portion" ColumnName="portion" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

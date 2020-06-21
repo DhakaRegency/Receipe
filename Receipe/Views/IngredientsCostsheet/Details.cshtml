@@ -1,0 +1,59 @@
+﻿@model Receipe.Models.rcp_ingredients_costsheet_child_t
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>rcp_ingredients_costsheet_child_t</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rcp_ingredients_costsheet_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rcp_ingredients_costsheet_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ingredients_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ingredients_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rct_ingredients_measurement_unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rct_ingredients_measurement_unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rec_standard_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rec_standard_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rec_standard_deviation_percentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rec_standard_deviation_percentage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
