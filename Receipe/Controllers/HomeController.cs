@@ -76,8 +76,8 @@ namespace Receipe.Controllers
 
              
             
-                db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
-                db.SaveChanges();
+            db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
+            db.SaveChanges();
                
             
             return RedirectToAction("Index","IngredientsCostsheet");
