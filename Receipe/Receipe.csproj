@@ -166,6 +166,7 @@
     <Compile Include="Models\rcp_recipe_parent_t.cs">
       <DependentUpon>ModelReceipe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\rcp_viewmodel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -287,17 +288,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\IngredientsCostsheet\Create.cshtml" />
     <Content Include="Views\IngredientsCostsheet\Delete.cshtml" />
     <Content Include="Views\IngredientsCostsheet\Details.cshtml" />
     <Content Include="Views\IngredientsCostsheet\Edit.cshtml" />
     <Content Include="Views\IngredientsCostsheet\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
