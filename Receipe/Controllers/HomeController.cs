@@ -33,10 +33,10 @@ namespace Receipe.Controllers
            };
 
             List<ingredie> ingredieList = new List<ingredie>() {
-                new ingredie(){ id=1, ingredieName="Bill"},
-                new ingredie(){ id=2, ingredieName="Steve"},
-                new ingredie(){ id=3, ingredieName="Ram"},
-                new ingredie(){ id=4, ingredieName="Moin"}
+                new ingredie(){ id=1, ingredieName="Rice"},
+                new ingredie(){ id=2, ingredieName="Pasta"},
+                new ingredie(){ id=3, ingredieName="French Fries"},
+                new ingredie(){ id=4, ingredieName="Ice Cream"}
             };
             List<unit> unitList = new List<unit>() {
                 new unit(){ id=1, unitName="kg"},
