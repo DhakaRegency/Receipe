@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HMS_LIVEModelStoreContainer" CdmEntityContainer="HMS_LIVEEntities">
+    <EntitySetMapping Name="rcp_ingredients_costsheet_child_t">
+      <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_ingredients_costsheet_child_t">
+        <MappingFragment StoreEntitySet="rcp_ingredients_costsheet_child_t">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rcp_ingredients_costsheet_id" ColumnName="rcp_ingredients_costsheet_id" />
+          <ScalarProperty Name="ingredients_id" ColumnName="ingredients_id" />
+          <ScalarProperty Name="rct_ingredients_measurement_unit" ColumnName="rct_ingredients_measurement_unit" />
+          <ScalarProperty Name="rec_standard_cost" ColumnName="rec_standard_cost" />
+          <ScalarProperty Name="rec_standard_deviation_percentage" ColumnName="rec_standard_deviation_percentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rcp_ingredients_costsheet_parent_t">
+      <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_ingredients_costsheet_parent_t">
+        <MappingFragment StoreEntitySet="rcp_ingredients_costsheet_parent_t">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="effective_from_date" ColumnName="effective_from_date" />
+          <ScalarProperty Name="effective_to_date" ColumnName="effective_to_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rcp_ingredients_list_t">
+      <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_ingredients_list_t">
+        <MappingFragment StoreEntitySet="rcp_ingredients_list_t">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rcp_production_t">
+      <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_production_t">
+        <MappingFragment StoreEntitySet="rcp_production_t">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="produced_recipe_id" ColumnName="produced_recipe_id" />
+          <ScalarProperty Name="produced_qty" ColumnName="produced_qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rcp_recipe_child_t">
+      <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_recipe_child_t">
+        <MappingFragment StoreEntitySet="rcp_recipe_child_t">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="recipe_parent_id" ColumnName="recipe_parent_id" />
+          <ScalarProperty Name="ingredients_id" ColumnName="ingredients_id" />
+          <ScalarProperty Name="measurement_unit" ColumnName="measurement_unit" />
+          <ScalarProperty Name="sub_recipe_id" ColumnName="sub_recipe_id" />
+          <ScalarProperty Name="is_sub_reipe" ColumnName="is_sub_reipe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rcp_recipe_parent_t">
+      <EntityTypeMapping TypeName="HMS_LIVEModel.rcp_recipe_parent_t">
+        <MappingFragment StoreEntitySet="rcp_recipe_parent_t">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="recipe_name" ColumnName="recipe_name" />
+          <ScalarProperty Name="wastage_percentage" ColumnName="wastage_percentage" />
+          <ScalarProperty Name="yeild_percentage" ColumnName="yeild_percentage" />
+          <ScalarProperty Name="portion" ColumnName="portion" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

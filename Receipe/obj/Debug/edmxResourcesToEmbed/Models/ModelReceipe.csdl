@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HMS_LIVEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="rcp_ingredients_costsheet_child_t">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rcp_ingredients_costsheet_id" Type="Int32" Nullable="false" />
+    <Property Name="ingredients_id" Type="Int32" Nullable="false" />
+    <Property Name="rct_ingredients_measurement_unit" Type="Int32" Nullable="false" />
+    <Property Name="rec_standard_cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="rec_standard_deviation_percentage" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rcp_ingredients_costsheet_parent_t">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="effective_from_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="effective_to_date" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="rcp_ingredients_list_t">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="is_active" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rcp_production_t">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="produced_recipe_id" Type="Int32" Nullable="false" />
+    <Property Name="produced_qty" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rcp_recipe_child_t">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="recipe_parent_id" Type="Int32" Nullable="false" />
+    <Property Name="ingredients_id" Type="Int32" Nullable="false" />
+    <Property Name="measurement_unit" Type="Int32" Nullable="false" />
+    <Property Name="sub_recipe_id" Type="Int32" Nullable="false" />
+    <Property Name="is_sub_reipe" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rcp_recipe_parent_t">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="recipe_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="wastage_percentage" Type="Int32" Nullable="false" />
+    <Property Name="yeild_percentage" Type="Int32" Nullable="false" />
+    <Property Name="portion" Type="Int32" Nullable="false" />
+    <Property Name="is_active" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="HMS_LIVEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="rcp_ingredients_costsheet_child_t" EntityType="Self.rcp_ingredients_costsheet_child_t" />
+    <EntitySet Name="rcp_ingredients_costsheet_parent_t" EntityType="Self.rcp_ingredients_costsheet_parent_t" />
+    <EntitySet Name="rcp_ingredients_list_t" EntityType="Self.rcp_ingredients_list_t" />
+    <EntitySet Name="rcp_production_t" EntityType="Self.rcp_production_t" />
+    <EntitySet Name="rcp_recipe_child_t" EntityType="Self.rcp_recipe_child_t" />
+    <EntitySet Name="rcp_recipe_parent_t" EntityType="Self.rcp_recipe_parent_t" />
+  </EntityContainer>
+</Schema>
