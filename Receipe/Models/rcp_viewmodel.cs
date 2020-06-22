@@ -35,12 +35,14 @@ namespace Receipe.Models
 
         [DisplayName("From date")]
         [Required]
-         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
         public DateTime fromDate { get; set; }
 
         [DisplayName("To Date")]
         [Required]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
         public DateTime toDate { get; set; }
 
     }

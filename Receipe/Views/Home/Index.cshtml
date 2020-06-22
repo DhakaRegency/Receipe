@@ -7,6 +7,8 @@
 @model List<Receipe.Models.rcp_viewmodel>
 
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -20,7 +22,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model[0].fromDate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-6">
-                        @Html.TextBoxFor(model => model[0].fromDate, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "calendar" } })
+                        @Html.EditorFor(model => model[0].fromDate, new { htmlAttributes = new { @class = "form-control", @id = "calendar" } })
                         @Html.ValidationMessageFor(model => model[0].fromDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -29,7 +31,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model[0].toDate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-6">
-                        @Html.TextBoxFor(model => model[0].toDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.EditorFor(model => model[0].toDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                         @Html.ValidationMessageFor(model => model[0].toDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -95,7 +97,13 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-
+    @*<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".clscalendar").datepicker();
+        });
+    </script>*@
 
 }
 
@@ -105,68 +113,4 @@
 
 
 
-@*@for (int i = 0; i < 15; i++)
-    {
 
-
-
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.rcp_ingredients_costsheet_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ingredients_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rct_ingredients_measurement_unit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rec_standard_cost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.rec_standard_deviation_percentage)
-            </td>
-
-        </tr>*@
-
-
-
-@*<div class="row">
-        <div class="col-sm-3">
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "ingredieName"), new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-3">
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.DropDownList("UnitList", new SelectList(ViewBag.UnitList, "id", "unitName"), new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model[i].price, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model[i].price, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model[i].elements, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model[i].elements, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-    </div>*@
