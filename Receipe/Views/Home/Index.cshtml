@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model Receipe.Models.rcp_viewmodel
+@model List<Receipe.Models.rcp_viewmodel>
 
 
 @using (Html.BeginForm())
@@ -15,55 +15,158 @@
 
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-         
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ingredieList, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "ingredieName"))
-
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    @Html.LabelFor(model => model[0].fromDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model[0].fromDate, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "calendar" } })
+                        @Html.ValidationMessageFor(model => model[0].fromDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    @Html.LabelFor(model => model[0].toDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model[0].toDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model[0].toDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.unitList, htmlAttributes: new { @class = "control-label col-md-2" })
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].ingredieList)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].unitList)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].elements)
+                </th>
+
+
+            </tr>
+            @for (int i = 0; i < 15; i++)
+            {
+
+
+
+                <tr>
+                    @*<td> @Html.DropDownList("userId", null, "---Select User Name---", htmlAttributes: new { @class = "form-control" })</td>*@
+                    <td>
+                        @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "ingredieName"), htmlAttributes: new { @class = "form-control" })
+                    </td>
+                    @*<td>
+                            @Html.DropDownListFor(model => model[i].ingredieList, (SelectList)ViewBag.userId, "--Select One--", htmlAttributes: new { @class = "form-control" })
+                        </td>*@
+                    <td>
+                        @Html.DropDownList("UnitList", new SelectList(ViewBag.UnitList, "id", "unitName"), htmlAttributes: new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model[i].price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model[i].price, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model[i].elements, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model[i].elements, "", new { @class = "text-danger" })
+                    </td>
+
+
+                </tr>
+
+            }
+        </table>
+        <div class="form-group right">
             <div class="col-md-10">
-                @Html.DropDownList("UnitList", new SelectList(ViewBag.UnitList, "id", "unitName"), new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.elements, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.elements, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.elements, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
- 
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+
+
 }
 
 
+
+
+
+
+
+@*@for (int i = 0; i < 15; i++)
+    {
+
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.rcp_ingredients_costsheet_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ingredients_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rct_ingredients_measurement_unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rec_standard_cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rec_standard_deviation_percentage)
+            </td>
+
+        </tr>*@
+
+
+
+@*<div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "ingredieName"), new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.DropDownList("UnitList", new SelectList(ViewBag.UnitList, "id", "unitName"), new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model[i].elements, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].elements, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>*@

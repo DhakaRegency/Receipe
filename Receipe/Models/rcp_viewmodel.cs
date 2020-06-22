@@ -29,10 +29,19 @@ namespace Receipe.Models
         [DisplayName("Unit")]
         public List<unit> unitList { get; set; }
         [DisplayName("Price")]
-
         public decimal price { get; set; }
-        [DisplayName("Elements")]
+        [DisplayName("Standard Deviation")]
         public int elements { get; set; }
+
+        [DisplayName("From date")]
+        [Required]
+         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime fromDate { get; set; }
+
+        [DisplayName("To Date")]
+        [Required]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime toDate { get; set; }
 
     }
 }
