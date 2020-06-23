@@ -73,7 +73,7 @@ namespace Receipe.Controllers
             db.SaveChanges();
 
             int costsheet_id = HomeBll.get_ingredients_costsheet_id();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (!(HomeBll.isIngredientInserted(_rcp_Viewmodel[0].fromDate, _rcp_Viewmodel[0].toDate, Convert.ToInt32(IngredieId[i]))))
                     {
@@ -86,6 +86,7 @@ namespace Receipe.Controllers
                     db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
                     db.SaveChanges();
                 }
+                 
             }
             return RedirectToAction("Index", "IngredientsCostsheet");
         }

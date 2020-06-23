@@ -73,8 +73,13 @@ namespace Receipe.BLL
         {
             DateTime FromDate = Convert.ToDateTime(fromdate);
             DateTime ToDate = Convert.ToDateTime(todate);
-            var costsheet =  db.rcp_ingredients_costsheet_parent_t.Where(m => m.effective_from_date == FromDate && m.effective_to_date==ToDate).Select(x=>x.id).ToList();
-            int costsheetId = costsheet[0];
+            var costsheet =  db.rcp_ingredients_costsheet_parent_t.Where(m => m.effective_from_date >= FromDate || m.effective_to_date<=ToDate).Select(x=>x.id).ToList();
+            int costsheetId = 0;
+            if (costsheet.Count!=0)
+            { 
+                 costsheetId = costsheet[0];
+            }
+            
             var costSheetList = db.rcp_ingredients_costsheet_child_t.Where(m=>m.rcp_ingredients_costsheet_id== costsheetId).OrderBy(x => x.id).ToList();
 
             return costSheetList;
