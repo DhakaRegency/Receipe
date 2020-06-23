@@ -225,7 +225,8 @@
     <Content Include="Views\IngredientsCostsheet\Details.cshtml" />
     <Content Include="Views\IngredientsCostsheet\Edit.cshtml" />
     <Content Include="Views\IngredientsCostsheet\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Add.cshtml" />
+    <Content Include="Views\Home\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

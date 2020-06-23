@@ -27,11 +27,6 @@ D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\roslyn\vbc.exe.config
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\roslyn\vbc.rsp
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\roslyn\VBCSCompiler.exe
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\roslyn\VBCSCompiler.exe.config
-D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csprojAssemblyReference.cache
-D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csproj.CoreCompileInputs.cache
-D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csproj.CopyComplete
-D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.dll
-D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.pdb
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\Antlr3.Runtime.dll
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\EntityFramework.dll
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\EntityFramework.SqlServer.dll
@@ -58,3 +53,8 @@ D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\System.Web.WebPages.Razor.xml
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\Newtonsoft.Json.xml
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\Antlr3.Runtime.pdb
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csproj.CoreCompileInputs.cache
+D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csproj.CopyComplete
+D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.dll
+D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.pdb
+D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csprojAssemblyReference.cache

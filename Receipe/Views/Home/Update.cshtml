@@ -1,0 +1,128 @@
+﻿
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Receipe.Models.rcp_ingredients_costsheet_child_t>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<hr />
+
+@using (Html.BeginForm("getCostSheet", "Home"))
+{
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="fromDate">From Date:</label>
+                <input type="date" id="idFromDate" name="nameFromDate">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="toDate">To Date:</label>
+                <input type="date" id="idToDate" name="nameToDate">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group " style="position: relative;">
+                <div class="col-md-12">
+                    <input type="submit" value="Search" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <hr />
+        <table class="table table-bordered table-responsive table-hover table-striped">
+            <tr>
+                <th>
+                    Ingredients
+                </th>
+                <th>
+                    Unit
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Standard Deviation
+                </th>
+            </tr>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+
+                <tr>
+                    @*<td> @Html.DropDownList("userId", null, "---Select User Name---", htmlAttributes: new { @class = "form-control" })</td>*@
+                    @*<td>
+                            @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "ingredieName"), htmlAttributes: new { @class = "form-control" })
+                        </td>*@
+                    <td>
+                        @Html.DropDownListFor(model => model[i].ingredients_id, new SelectList(ViewBag.IngredieList, "id", "ingredieName", Model[i].ingredients_id), htmlAttributes: new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model[i].rct_ingredients_measurement_unit, new SelectList(ViewBag.UnitList, "id", "unitName", Model[i].rct_ingredients_measurement_unit), htmlAttributes: new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model[i].rec_standard_cost, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model[i].rec_standard_cost, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model[i].rec_standard_deviation_percentage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model[i].rec_standard_deviation_percentage, "", new { @class = "text-danger" })
+                    </td>
+                    @Html.HiddenFor(model => model[i].rcp_ingredients_costsheet_id)
+                    @Html.HiddenFor(model => model[i].id)
+                </tr>
+
+            }
+        </table>
+        <div class="form-group " style="position: relative;">
+            <div class="col-md-12">
+                <input style="position: absolute; right: 8px; top: 5px;" type="submit" value="Update" class="btn btn-info" data-confirm="Do You Want To Update?" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('[data-confirm]').click(function (e) {
+                if (!confirm(jQuery(this).attr("data-confirm"))) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+
+

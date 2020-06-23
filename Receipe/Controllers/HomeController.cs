@@ -3,6 +3,7 @@ using Receipe.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
@@ -14,7 +15,8 @@ namespace Receipe.Controllers
     {
         private HMS_LIVEEntities db = new HMS_LIVEEntities();
         private HomeBLL HomeBll = new HomeBLL();
-        public ActionResult Index()
+        static List<rcp_ingredients_costsheet_child_t> _rcp_ingredients_costsheet_child_t = new List<rcp_ingredients_costsheet_child_t>();
+        public ActionResult Add()
         {
             List<rcp_viewmodel> rcp_Viewmodel = new List<rcp_viewmodel>{
                new rcp_viewmodel { price = 0, elements = 0 ,fromDate=DateTime.Now,toDate=DateTime.Now},
@@ -34,26 +36,14 @@ namespace Receipe.Controllers
                new rcp_viewmodel { price = 0, elements = 0 },
            };
 
-            List<ingredie> ingredieList = new List<ingredie>() {
-                new ingredie(){ id=1, ingredieName="Rice"},
-                new ingredie(){ id=2, ingredieName="Pasta"},
-                new ingredie(){ id=3, ingredieName="French Fries"},
-                new ingredie(){ id=4, ingredieName="Ice Cream"}
-            };
-            List<unit> unitList = new List<unit>() {
-                new unit(){ id=1, unitName="kg"},
-                new unit(){ id=2, unitName="mg"},
-                new unit(){ id=3, unitName="litter"},
-                new unit(){ id=4, unitName="cm"}
-            };
+            
+            ViewBag.IngredieList = HomeBll.getIngredieList();  
+            ViewBag.UnitList = HomeBll.getUnitList();
 
-            ViewBag.IngredieList = ingredieList;
-            ViewBag.UnitList = unitList;
+            ViewBag.userId = new SelectList(HomeBll.getIngredieList(), "id", "ingredieName");
 
-            ViewBag.userId = new SelectList(ingredieList, "id", "ingredieName");
-
-            rcp_Viewmodel[0].ingredieList = ingredieList;
-            rcp_Viewmodel[0].unitList = unitList;
+            rcp_Viewmodel[0].ingredieList = HomeBll.getIngredieList(); 
+            rcp_Viewmodel[0].unitList = HomeBll.getUnitList();
 
 
             return View(rcp_Viewmodel);
@@ -61,32 +51,19 @@ namespace Receipe.Controllers
 
 
         [HttpPost]
-        public ActionResult Index(List<rcp_viewmodel> _rcp_Viewmodel, List<FormCollection> form)
+        public ActionResult Add(List<rcp_viewmodel> _rcp_Viewmodel, List<FormCollection> form)
         {
             rcp_viewmodel rcp_Viewmodel = new rcp_viewmodel();
 
-            List<ingredie> ingredieList = new List<ingredie>() {
-                new ingredie(){ id=1, ingredieName="Rice"},
-                new ingredie(){ id=2, ingredieName="Pasta"},
-                new ingredie(){ id=3, ingredieName="French Fries"},
-                new ingredie(){ id=4, ingredieName="Ice Cream"}
-            };
-            List<unit> unitList = new List<unit>() {
-                new unit(){ id=1, unitName="kg"},
-                new unit(){ id=2, unitName="mg"},
-                new unit(){ id=3, unitName="litter"},
-                new unit(){ id=4, unitName="cm"}
-            };
+            ViewBag.IngredieList = HomeBll.getIngredieList();
+            ViewBag.UnitList = HomeBll.getUnitList();
 
-            ViewBag.IngredieList = ingredieList;
-            ViewBag.UnitList = unitList;
+            rcp_Viewmodel.ingredieList = HomeBll.getIngredieList();
+            rcp_Viewmodel.unitList = HomeBll.getUnitList();
 
-            rcp_Viewmodel.ingredieList = ingredieList;
-            rcp_Viewmodel.unitList = unitList;
 
-            char[] IngredieId =form[0]["ingredieList"].ToString().ToArray();
-            char[] UnitID = form[1]["UnitList"].ToString().ToArray();
-
+            string[] IngredieId = form[0]["ingredieList"].ToString().Split(',');
+            string[] UnitID = form[1]["UnitList"].ToString().Split(',');
 
             rcp_ingredients_costsheet_parent_t rcp_Ingredients_Costsheet_Parent_T = new rcp_ingredients_costsheet_parent_t();
             rcp_Ingredients_Costsheet_Parent_T.effective_from_date = _rcp_Viewmodel[0].fromDate;
@@ -99,19 +76,52 @@ namespace Receipe.Controllers
             for (int i=0;i<5;i++)
             {
                 rcp_ingredients_costsheet_child_t rcp_Ingredients_Costsheet_Child_T = new rcp_ingredients_costsheet_child_t();
-                rcp_Ingredients_Costsheet_Child_T.ingredients_id = IngredieId[i];
-                rcp_Ingredients_Costsheet_Child_T.rct_ingredients_measurement_unit = UnitID[i];
+                rcp_Ingredients_Costsheet_Child_T.ingredients_id = Convert.ToInt32(IngredieId[i]);
+                rcp_Ingredients_Costsheet_Child_T.rct_ingredients_measurement_unit =Convert.ToInt32(UnitID[i]);
                 rcp_Ingredients_Costsheet_Child_T.rcp_ingredients_costsheet_id = costsheet_id;
                 rcp_Ingredients_Costsheet_Child_T.rec_standard_cost = _rcp_Viewmodel[i].price;
                 rcp_Ingredients_Costsheet_Child_T.rec_standard_deviation_percentage = _rcp_Viewmodel[i].elements;
                 db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
                 db.SaveChanges();
             }
-
             return RedirectToAction("Index", "IngredientsCostsheet");
-
         }
 
 
+        public ActionResult Update()
+        {
+
+            ViewBag.IngredieList = HomeBll.getIngredieList();
+            ViewBag.UnitList = HomeBll.getUnitList();
+
+            return View(_rcp_ingredients_costsheet_child_t);
+        }
+
+        [HttpPost]
+        public ActionResult Update(List<rcp_ingredients_costsheet_child_t> rcp_Ingredients_Costsheet_Child_Ts)
+        {
+
+            ViewBag.IngredieList = HomeBll.getIngredieList();
+            ViewBag.UnitList = HomeBll.getUnitList();
+            foreach(var item in rcp_Ingredients_Costsheet_Child_Ts)
+            {
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "IngredientsCostsheet");
+        }
+
+
+        public ActionResult getCostSheet(FormCollection form)
+        {
+            ViewBag.IngredieList = HomeBll.getIngredieList();
+            ViewBag.UnitList = HomeBll.getUnitList();
+
+            string fromdate = form[0].ToString();
+            string todate = form[1].ToString();
+             
+            _rcp_ingredients_costsheet_child_t = HomeBll.get_data_within_date_range(fromdate,todate);
+            return RedirectToAction("Update", "Home", _rcp_ingredients_costsheet_child_t);
+        }
     }
 }
