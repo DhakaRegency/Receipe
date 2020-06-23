@@ -9,34 +9,42 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <hr />
-
+<div class="alert alert-success" style="margin-top:15px">
+    <strong>Update Cost Sheet Information</strong>
+</div>
 @using (Html.BeginForm("getCostSheet", "Home"))
 {
 
     <div class="row">
         <div class="col-md-4">
-            <div class="form-group">
-                <label for="fromDate">From Date:</label>
-                <input type="date" id="idFromDate" name="nameFromDate">
+            <div class="input-group">
+
+                <span class="input-group-addon">From Date:</span>
+                <input type="date" class="form-control" id="idFromDate" name="nameFromDate" required>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="form-group">
-                <label for="toDate">To Date:</label>
-                <input type="date" id="idToDate" name="nameToDate">
+            <div class="input-group">
+
+                <span class="input-group-addon">To Date:</span>
+                <input type="date" class="form-control" id="idToDate" name="nameToDate" required>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group " style="position: relative;">
                 <div class="col-md-12">
-                    <input type="submit" value="Search" class="btn btn-success" />
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
+                        @*<input type="submit" value="Search" class="btn btn-success " />*@
+                    
                 </div>
             </div>
         </div>
     </div>
 }
 
-
+ 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -67,10 +75,7 @@
             {
 
                 <tr>
-                    @*<td> @Html.DropDownList("userId", null, "---Select User Name---", htmlAttributes: new { @class = "form-control" })</td>*@
-                    @*<td>
-                            @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "ingredieName"), htmlAttributes: new { @class = "form-control" })
-                        </td>*@
+
                     <td>
                         @Html.DropDownListFor(model => model[i].ingredients_id, new SelectList(ViewBag.IngredieList, "id", "ingredieName", Model[i].ingredients_id), htmlAttributes: new { @class = "form-control" })
                     </td>
@@ -93,7 +98,7 @@
         </table>
         <div class="form-group " style="position: relative;">
             <div class="col-md-12">
-                <input style="position: absolute; right: 8px; top: 5px;" type="submit" value="Update" class="btn btn-info" data-confirm="Do You Want To Update?" />
+                <input style="position: absolute; right: 8px; top: 5px;" type="submit" value="Update" id="saveButton" class="btn btn-info" data-confirm="Do You Want To Update?" />
             </div>
         </div>
     </div>
@@ -113,6 +118,18 @@
             });
         });
     </script>
+    @*<script>
+        $(document).ready(function () {
+            $('#saveButton').click(function () {
+                $(this).prop("disabled", true);
+                if (!$('form').valid()) {
+                    $(this).prop("disabled", false);
+                    return false;
+                }
+                $('form').submit();
+            });
+        });
+    </script>*@
 
 }
 

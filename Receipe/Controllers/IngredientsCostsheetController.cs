@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Receipe.BLL;
 using Receipe.Models;
 
 namespace Receipe.Controllers
@@ -13,10 +14,12 @@ namespace Receipe.Controllers
     public class IngredientsCostsheetController : Controller
     {
         private HMS_LIVEEntities db = new HMS_LIVEEntities();
-
+        private HomeBLL HomeBll = new HomeBLL();
         // GET: IngredientsCostsheet
         public ActionResult Index()
         {
+            ViewBag.IngredieList = HomeBll.getIngredieList();
+            ViewBag.UnitList = HomeBll.getUnitList();
             return View(db.rcp_ingredients_costsheet_child_t.ToList());
         }
 
