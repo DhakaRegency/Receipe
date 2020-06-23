@@ -1,4 +1,5 @@
-﻿using Receipe.Models;
+﻿using Receipe.BLL;
+using Receipe.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace Receipe.Controllers
     public class HomeController : Controller
     {
         private HMS_LIVEEntities db = new HMS_LIVEEntities();
+        private HomeBLL HomeBll = new HomeBLL();
         public ActionResult Index()
         {
             List<rcp_viewmodel> rcp_Viewmodel = new List<rcp_viewmodel>{
@@ -86,28 +88,25 @@ namespace Receipe.Controllers
             char[] UnitID = form[1]["UnitList"].ToString().ToArray();
 
 
-            
-             
-            for(int i=0;i<15;i++)
-            {
-                rcp_ingredients_costsheet_child_t rcp_Ingredients_Costsheet_Child_T = new rcp_ingredients_costsheet_child_t();
-                rcp_Ingredients_Costsheet_Child_T.ingredients_id = IngredieId[i];
-                rcp_Ingredients_Costsheet_Child_T.rct_ingredients_measurement_unit = UnitID[i];
-                rcp_Ingredients_Costsheet_Child_T.rcp_ingredients_costsheet_id = 1;
-                rcp_Ingredients_Costsheet_Child_T.rec_standard_cost = _rcp_Viewmodel[i].price;
-                rcp_Ingredients_Costsheet_Child_T.rec_standard_deviation_percentage = _rcp_Viewmodel[i].elements;
-                db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
-                db.SaveChanges();
-            }
-
-
-
             rcp_ingredients_costsheet_parent_t rcp_Ingredients_Costsheet_Parent_T = new rcp_ingredients_costsheet_parent_t();
             rcp_Ingredients_Costsheet_Parent_T.effective_from_date = _rcp_Viewmodel[0].fromDate;
             rcp_Ingredients_Costsheet_Parent_T.effective_to_date = _rcp_Viewmodel[0].toDate;
 
             db.rcp_ingredients_costsheet_parent_t.Add(rcp_Ingredients_Costsheet_Parent_T);
             db.SaveChanges();
+
+            int costsheet_id = HomeBll.get_ingredients_costsheet_id();
+            for (int i=0;i<5;i++)
+            {
+                rcp_ingredients_costsheet_child_t rcp_Ingredients_Costsheet_Child_T = new rcp_ingredients_costsheet_child_t();
+                rcp_Ingredients_Costsheet_Child_T.ingredients_id = IngredieId[i];
+                rcp_Ingredients_Costsheet_Child_T.rct_ingredients_measurement_unit = UnitID[i];
+                rcp_Ingredients_Costsheet_Child_T.rcp_ingredients_costsheet_id = costsheet_id;
+                rcp_Ingredients_Costsheet_Child_T.rec_standard_cost = _rcp_Viewmodel[i].price;
+                rcp_Ingredients_Costsheet_Child_T.rec_standard_deviation_percentage = _rcp_Viewmodel[i].elements;
+                db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
+                db.SaveChanges();
+            }
 
             return RedirectToAction("Index", "IngredientsCostsheet");
 
