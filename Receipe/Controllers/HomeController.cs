@@ -36,13 +36,13 @@ namespace Receipe.Controllers
                new rcp_viewmodel { price = 0, elements = 0 },
            };
 
-            
-            ViewBag.IngredieList = HomeBll.getIngredieList();  
+
+            ViewBag.IngredieList = HomeBll.getIngredieList();
             ViewBag.UnitList = HomeBll.getUnitList();
 
             ViewBag.userId = new SelectList(HomeBll.getIngredieList(), "id", "ingredieName");
 
-            rcp_Viewmodel[0].ingredieList = HomeBll.getIngredieList(); 
+            rcp_Viewmodel[0].ingredieList = HomeBll.getIngredieList();
             rcp_Viewmodel[0].unitList = HomeBll.getUnitList();
 
 
@@ -73,16 +73,19 @@ namespace Receipe.Controllers
             db.SaveChanges();
 
             int costsheet_id = HomeBll.get_ingredients_costsheet_id();
-            for (int i=0;i<5;i++)
+            for (int i = 0; i < 5; i++)
             {
-                rcp_ingredients_costsheet_child_t rcp_Ingredients_Costsheet_Child_T = new rcp_ingredients_costsheet_child_t();
-                rcp_Ingredients_Costsheet_Child_T.ingredients_id = Convert.ToInt32(IngredieId[i]);
-                rcp_Ingredients_Costsheet_Child_T.rct_ingredients_measurement_unit =Convert.ToInt32(UnitID[i]);
-                rcp_Ingredients_Costsheet_Child_T.rcp_ingredients_costsheet_id = costsheet_id;
-                rcp_Ingredients_Costsheet_Child_T.rec_standard_cost = _rcp_Viewmodel[i].price;
-                rcp_Ingredients_Costsheet_Child_T.rec_standard_deviation_percentage = _rcp_Viewmodel[i].elements;
-                db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
-                db.SaveChanges();
+                if (!(HomeBll.isIngredientInserted(_rcp_Viewmodel[0].fromDate, _rcp_Viewmodel[0].toDate, Convert.ToInt32(IngredieId[i]))))
+                    {
+                    rcp_ingredients_costsheet_child_t rcp_Ingredients_Costsheet_Child_T = new rcp_ingredients_costsheet_child_t();
+                    rcp_Ingredients_Costsheet_Child_T.ingredients_id = Convert.ToInt32(IngredieId[i]);
+                    rcp_Ingredients_Costsheet_Child_T.rct_ingredients_measurement_unit = Convert.ToInt32(UnitID[i]);
+                    rcp_Ingredients_Costsheet_Child_T.rcp_ingredients_costsheet_id = costsheet_id;
+                    rcp_Ingredients_Costsheet_Child_T.rec_standard_cost = _rcp_Viewmodel[i].price;
+                    rcp_Ingredients_Costsheet_Child_T.rec_standard_deviation_percentage = _rcp_Viewmodel[i].elements;
+                    db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
+                    db.SaveChanges();
+                }
             }
             return RedirectToAction("Index", "IngredientsCostsheet");
         }
@@ -103,7 +106,7 @@ namespace Receipe.Controllers
 
             ViewBag.IngredieList = HomeBll.getIngredieList();
             ViewBag.UnitList = HomeBll.getUnitList();
-            foreach(var item in rcp_Ingredients_Costsheet_Child_Ts)
+            foreach (var item in rcp_Ingredients_Costsheet_Child_Ts)
             {
                 db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
@@ -119,8 +122,8 @@ namespace Receipe.Controllers
 
             string fromdate = form[0].ToString();
             string todate = form[1].ToString();
-             
-            _rcp_ingredients_costsheet_child_t = HomeBll.get_data_within_date_range(fromdate,todate);
+
+            _rcp_ingredients_costsheet_child_t = HomeBll.get_data_within_date_range(fromdate, todate);
             return RedirectToAction("Update", "Home", _rcp_ingredients_costsheet_child_t);
         }
     }
