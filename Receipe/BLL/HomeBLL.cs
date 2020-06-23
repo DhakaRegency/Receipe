@@ -131,7 +131,7 @@ namespace Receipe.BLL
 
                 DateTime FromDate = Convert.ToDateTime(fromdate);
                 DateTime ToDate = Convert.ToDateTime(todate);
-                var costsheet = db.rcp_ingredients_costsheet_parent_t.Where(m => m.effective_from_date >= FromDate || m.effective_to_date <= ToDate).Select(x => x.id).ToList();
+                var costsheet = db.rcp_ingredients_costsheet_parent_t.Where(m => m.effective_from_date >= FromDate && m.effective_to_date <= ToDate).Select(x => x.id).ToList();
                 int costsheetId = 0;
                 if (costsheet.Count != 0)
                 {

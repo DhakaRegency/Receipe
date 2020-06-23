@@ -36,7 +36,7 @@
                     <button type="submit" class="btn btn-success">
                         <span class="glyphicon glyphicon-search"></span> Search
                     </button>
-                        @*<input type="submit" value="Search" class="btn btn-success " />*@
+                        
                     
                 </div>
             </div>
@@ -122,11 +122,11 @@
         $(document).ready(function () {
             $('#saveButton').click(function () {
                 $(this).prop("disabled", true);
-                if (!$('form').valid()) {
+                if (!$('table').valid()) {
                     $(this).prop("disabled", false);
                     return false;
                 }
-                $('form').submit();
+                $('table').submit();
             });
         });
     </script>*@

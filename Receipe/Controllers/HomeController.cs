@@ -16,6 +16,7 @@ namespace Receipe.Controllers
         private HMS_LIVEEntities db = new HMS_LIVEEntities();
         private HomeBLL HomeBll = new HomeBLL();
         static List<rcp_ingredients_costsheet_child_t> _rcp_ingredients_costsheet_child_t = new List<rcp_ingredients_costsheet_child_t>();
+
         public ActionResult Add()
         {
             try
@@ -80,6 +81,7 @@ namespace Receipe.Controllers
                     }
 
                 }
+
                 return RedirectToAction("Index", "IngredientsCostsheet");
             }
             catch (Exception ex)
@@ -102,7 +104,7 @@ namespace Receipe.Controllers
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
 
         }
@@ -114,10 +116,13 @@ namespace Receipe.Controllers
             {
                 ViewBag.IngredieList = HomeBll.getIngredieList();
                 ViewBag.UnitList = HomeBll.getUnitList();
-                foreach (var item in rcp_Ingredients_Costsheet_Child_Ts)
+                if (rcp_Ingredients_Costsheet_Child_Ts != null)
                 {
-                    db.Entry(item).State = EntityState.Modified;
-                    db.SaveChanges();
+                    foreach (var item in rcp_Ingredients_Costsheet_Child_Ts)
+                    {
+                        db.Entry(item).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
                 }
                 return RedirectToAction("Index", "IngredientsCostsheet");
             }

@@ -17,7 +17,7 @@ namespace Receipe.Models
     public partial class rcp_ingredients_costsheet_child_t
     {
         public int id { get; set; }
-        [DisplayName("Cost Sheet")]
+        [DisplayName("Cost Sheet No")]
         public int rcp_ingredients_costsheet_id { get; set; }
         [DisplayName("Ingredients")]
         public int ingredients_id { get; set; }
