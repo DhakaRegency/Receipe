@@ -79,9 +79,9 @@
 
             }
         </table>
-        <div class="form-group "style="position: relative;">
+        <div class="form-group " style="position: relative;">
             <div class="col-md-12">
-                <input style="position: absolute; right: 8px; top: 5px;" type="submit" value="Create" class="btn btn-success" />
+                <input style="position: absolute; right: 8px; top: 5px;" type="submit" value="Create" class="btn btn-success" data-confirm="Do You Want To Save?" />
             </div>
         </div>
     </div>
@@ -97,9 +97,20 @@
             $(document).ready(function () {
                 $(".clscalendar").datepicker();
             });
-        </script>*@
 
+        </script>*@
+<script>
+    jQuery(document).ready(function () {
+        jQuery('[data-confirm]').click(function (e) {
+            if (!confirm(jQuery(this).attr("data-confirm"))) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+        
 }
+        
 
 
 
