@@ -57,4 +57,3 @@ D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csproj.CoreCompil
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csproj.CopyComplete
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.dll
 D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.pdb
-D:\Regency\Receipe\ReceipeUI\Receipe\Receipe\obj\Debug\Receipe.csprojAssemblyReference.cache
