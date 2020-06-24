@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HMS_LIVEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="pos_measurement_t">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="is_fraction" Type="bit" Nullable="false" />
+    <Property Name="creator" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="creationdate" Type="datetime" Nullable="false" />
+    <Property Name="modifier" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="modificationdate" Type="datetime" Nullable="false" />
+    <Property Name="is_receipe_unit" Type="smallint" />
+  </EntityType>
   <EntityType Name="rcp_ingredients_costsheet_child_t">
     <Key>
       <PropertyRef Name="id" />
@@ -59,6 +72,7 @@
     <Property Name="is_active" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityContainer Name="HMS_LIVEModelStoreContainer">
+    <EntitySet Name="pos_measurement_t" EntityType="Self.pos_measurement_t" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rcp_ingredients_costsheet_child_t" EntityType="Self.rcp_ingredients_costsheet_child_t" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rcp_ingredients_costsheet_parent_t" EntityType="Self.rcp_ingredients_costsheet_parent_t" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rcp_ingredients_list_t" EntityType="Self.rcp_ingredients_list_t" Schema="dbo" store:Type="Tables" />

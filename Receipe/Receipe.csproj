@@ -149,6 +149,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelReceipe.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\pos_measurement_t.cs">
+      <DependentUpon>ModelReceipe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\rcp_ingredients_costsheet_child_t.cs">
       <DependentUpon>ModelReceipe.tt</DependentUpon>
     </Compile>

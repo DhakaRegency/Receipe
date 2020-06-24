@@ -65,5 +65,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="pos_measurement_t">
+      <EntityTypeMapping TypeName="HMS_LIVEModel.pos_measurement_t">
+        <MappingFragment StoreEntitySet="pos_measurement_t">
+          <ScalarProperty Name="is_receipe_unit" ColumnName="is_receipe_unit" />
+          <ScalarProperty Name="modificationdate" ColumnName="modificationdate" />
+          <ScalarProperty Name="modifier" ColumnName="modifier" />
+          <ScalarProperty Name="creationdate" ColumnName="creationdate" />
+          <ScalarProperty Name="creator" ColumnName="creator" />
+          <ScalarProperty Name="is_fraction" ColumnName="is_fraction" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

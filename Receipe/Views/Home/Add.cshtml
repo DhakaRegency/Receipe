@@ -8,6 +8,8 @@
 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+
 <div class="alert alert-success" style="margin-top:15px">
     <strong>Add New Cost Sheet</strong>
 </div>
@@ -52,7 +54,7 @@
                     @Html.DisplayNameFor(model => model[0].price)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model[0].elements)
+                    @Html.DisplayNameFor(model => model[0].deviation)
                 </th>
             </tr>
             @for (int i = 0; i < 4; i++)
@@ -61,21 +63,21 @@
                 <tr>
                     @*<td> @Html.DropDownList("userId", null, "---Select User Name---", htmlAttributes: new { @class = "form-control" })</td>*@
                     <td>
-                        @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "ingredieName"), htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("IngredieList", new SelectList(ViewBag.IngredieList, "id", "name"), htmlAttributes: new { @class = "form-control" })
                     </td>
                     @*<td>
                             @Html.DropDownListFor(model => model[i].ingredieList, (SelectList)ViewBag.userId, "--Select One--", htmlAttributes: new { @class = "form-control" })
                         </td>*@
                     <td>
-                        @Html.DropDownList("UnitList", new SelectList(ViewBag.UnitList, "id", "unitName"), htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("UnitList", new SelectList(ViewBag.UnitList, "code", "description"), htmlAttributes: new { @class = "form-control" })
                     </td>
                     <td>
                         @Html.EditorFor(model => model[i].price, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model[i].price, "", new { @class = "text-danger" })
                     </td>
                     <td>
-                        @Html.EditorFor(model => model[i].elements, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model[i].elements, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model[i].deviation, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model[i].deviation, "", new { @class = "text-danger" })
                     </td>
                 </tr>
 

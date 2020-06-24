@@ -16,21 +16,21 @@ namespace Receipe.BLL
             {
 
                List<rcp_viewmodel> rcp_Viewmodel = new List<rcp_viewmodel>{
-               new rcp_viewmodel { price = 0, elements = 0 ,fromDate=DateTime.Now,toDate=DateTime.Now},
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
-               new rcp_viewmodel { price = 0, elements = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 ,fromDate=DateTime.Now,toDate=DateTime.Now},
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
+               new rcp_viewmodel { price = 0, deviation = 0 },
            };
                 return rcp_Viewmodel;
             }
@@ -40,27 +40,19 @@ namespace Receipe.BLL
                 throw ex;
             }
         }
-        public List<ingredie> getIngredieList()
+        public List<rcp_ingredients_list_t> getIngredieList()
         {
 
-            List<ingredie> ingredieList = new List<ingredie>() {
-                new ingredie(){ id=1, ingredieName="Rice"},
-                new ingredie(){ id=2, ingredieName="Pasta"},
-                new ingredie(){ id=3, ingredieName="French Fries"},
-                new ingredie(){ id=4, ingredieName="Ice Cream"}
-            };
+            List<rcp_ingredients_list_t> ingredieList = new List<rcp_ingredients_list_t>();
+            ingredieList = db.rcp_ingredients_list_t.OrderBy(m => m.id).ToList();
 
             return ingredieList;
         }
-        public List<unit> getUnitList()
+        public List<pos_measurement_t> getUnitList()
         {
 
-            List<unit> unitList = new List<unit>() {
-                new unit(){ id=1, unitName="kg"},
-                new unit(){ id=2, unitName="mg"},
-                new unit(){ id=3, unitName="litter"},
-                new unit(){ id=4, unitName="cm"}
-            };
+            List<pos_measurement_t> unitList = new List<pos_measurement_t>();
+            unitList = db.pos_measurement_t.OrderBy(m => m.code).ToList();
 
             return unitList;
         }

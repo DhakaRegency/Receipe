@@ -14,7 +14,7 @@
 <div class="alert alert-success">
     <strong>Ingredients Cost Sheet</strong>
 </div>
- 
+
 <table class="table table-bordered table-responsive table-hover table-striped">
     <tr>
         <th>
@@ -43,10 +43,10 @@
             </td>
 
             <td>
-                @Html.DropDownListFor(modelItem => item.ingredients_id, new SelectList(ViewBag.IngredieList, "id", "ingredieName", item.ingredients_id), htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(modelItem => item.ingredients_id, new SelectList(ViewBag.IngredieList, "id", "name", item.ingredients_id), htmlAttributes: new { @class = "form-control dropdown-content" })
             </td>
             <td>
-                @Html.DropDownListFor(modelItem => item.rct_ingredients_measurement_unit, new SelectList(ViewBag.UnitList, "id", "unitName", item.rct_ingredients_measurement_unit), htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(modelItem => item.rct_ingredients_measurement_unit, new SelectList(ViewBag.UnitList, "code", "description", item.rct_ingredients_measurement_unit), htmlAttributes: new { @class = "form-control" })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.rec_standard_cost)
@@ -60,6 +60,19 @@
                     @Html.ActionLink("Delete", "Delete", new { id=item.id }, new { @class = "btn btn-danger btn-large" })
                 </td>*@
         </tr>
+
     }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @if (TempData["Success"] != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("Inserted Successfully");
+                            });
+        </script>
+    }
+}

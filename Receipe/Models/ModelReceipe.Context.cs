@@ -31,5 +31,6 @@ namespace Receipe.Models
         public virtual DbSet<rcp_production_t> rcp_production_t { get; set; }
         public virtual DbSet<rcp_recipe_child_t> rcp_recipe_child_t { get; set; }
         public virtual DbSet<rcp_recipe_parent_t> rcp_recipe_parent_t { get; set; }
+        public virtual DbSet<pos_measurement_t> pos_measurement_t { get; set; }
     }
 }

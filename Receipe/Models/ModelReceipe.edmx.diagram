@@ -9,8 +9,9 @@
         <EntityTypeShape EntityType="HMS_LIVEModel.rcp_ingredients_costsheet_parent_t" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HMS_LIVEModel.rcp_ingredients_list_t" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HMS_LIVEModel.rcp_production_t" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HMS_LIVEModel.rcp_recipe_child_t" Width="1.5" PointX="4.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMS_LIVEModel.rcp_recipe_child_t" Width="1.5" PointX="4.875" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HMS_LIVEModel.rcp_recipe_parent_t" Width="1.5" PointX="5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMS_LIVEModel.pos_measurement_t" Width="1.5" PointX="6.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

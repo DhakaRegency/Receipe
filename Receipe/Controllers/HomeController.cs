@@ -60,7 +60,7 @@ namespace Receipe.Controllers
 
                 rcp_ingredients_costsheet_parent_t rcp_Ingredients_Costsheet_Parent_T = new rcp_ingredients_costsheet_parent_t();
                 rcp_Ingredients_Costsheet_Parent_T.effective_from_date = _rcp_Viewmodel[0].fromDate;
-                rcp_Ingredients_Costsheet_Parent_T.effective_to_date = _rcp_Viewmodel[0].toDate;
+                rcp_Ingredients_Costsheet_Parent_T.effective_to_date = _rcp_Viewmodel[0].toDate;    
 
                 db.rcp_ingredients_costsheet_parent_t.Add(rcp_Ingredients_Costsheet_Parent_T);
                 db.SaveChanges();
@@ -75,13 +75,13 @@ namespace Receipe.Controllers
                         rcp_Ingredients_Costsheet_Child_T.rct_ingredients_measurement_unit = Convert.ToInt32(UnitID[i]);
                         rcp_Ingredients_Costsheet_Child_T.rcp_ingredients_costsheet_id = costsheet_id;
                         rcp_Ingredients_Costsheet_Child_T.rec_standard_cost = _rcp_Viewmodel[i].price;
-                        rcp_Ingredients_Costsheet_Child_T.rec_standard_deviation_percentage = _rcp_Viewmodel[i].elements;
+                        rcp_Ingredients_Costsheet_Child_T.rec_standard_deviation_percentage = _rcp_Viewmodel[i].deviation;
                         db.rcp_ingredients_costsheet_child_t.Add(rcp_Ingredients_Costsheet_Child_T);
                         db.SaveChanges();
                     }
 
                 }
-
+                TempData["Success"] = "Added Successfully!";
                 return RedirectToAction("Index", "IngredientsCostsheet");
             }
             catch (Exception ex)

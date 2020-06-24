@@ -77,10 +77,10 @@
                 <tr>
 
                     <td>
-                        @Html.DropDownListFor(model => model[i].ingredients_id, new SelectList(ViewBag.IngredieList, "id", "ingredieName", Model[i].ingredients_id), htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model[i].ingredients_id, new SelectList(ViewBag.IngredieList, "id", "name", Model[i].ingredients_id), htmlAttributes: new { @class = "form-control" })
                     </td>
                     <td>
-                        @Html.DropDownListFor(model => model[i].rct_ingredients_measurement_unit, new SelectList(ViewBag.UnitList, "id", "unitName", Model[i].rct_ingredients_measurement_unit), htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model[i].rct_ingredients_measurement_unit, new SelectList(ViewBag.UnitList, "code", "description", Model[i].rct_ingredients_measurement_unit), htmlAttributes: new { @class = "form-control" })
                     </td>
                     <td>
                         @Html.EditorFor(model => model[i].rec_standard_cost, new { htmlAttributes = new { @class = "form-control" } })

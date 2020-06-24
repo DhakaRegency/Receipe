@@ -65,5 +65,19 @@
     <EntitySet Name="rcp_production_t" EntityType="Self.rcp_production_t" />
     <EntitySet Name="rcp_recipe_child_t" EntityType="Self.rcp_recipe_child_t" />
     <EntitySet Name="rcp_recipe_parent_t" EntityType="Self.rcp_recipe_parent_t" />
+    <EntitySet Name="pos_measurement_t" EntityType="HMS_LIVEModel.pos_measurement_t" />
   </EntityContainer>
+  <EntityType Name="pos_measurement_t">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="is_fraction" Type="Boolean" Nullable="false" />
+    <Property Name="creator" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="creationdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifier" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="modificationdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="is_receipe_unit" Type="Int16" />
+  </EntityType>
 </Schema>

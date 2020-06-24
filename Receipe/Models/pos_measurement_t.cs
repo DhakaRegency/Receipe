@@ -12,13 +12,15 @@ namespace Receipe.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class rcp_ingredients_costsheet_child_t
+    public partial class pos_measurement_t
     {
-        public int id { get; set; }
-        public int rcp_ingredients_costsheet_id { get; set; }
-        public int ingredients_id { get; set; }
-        public int rct_ingredients_measurement_unit { get; set; }
-        public decimal rec_standard_cost { get; set; }
-        public int rec_standard_deviation_percentage { get; set; }
+        public string code { get; set; }
+        public string description { get; set; }
+        public bool is_fraction { get; set; }
+        public string creator { get; set; }
+        public System.DateTime creationdate { get; set; }
+        public string modifier { get; set; }
+        public System.DateTime modificationdate { get; set; }
+        public Nullable<short> is_receipe_unit { get; set; }
     }
 }
